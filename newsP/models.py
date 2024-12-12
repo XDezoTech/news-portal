@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=250, null= True)
+    name = models.CharField(max_length=250, null=True)
     status = models.CharField(max_length=2, choices=(("1",'Active'), ("2",'Inactive')), default=1)
     date_created = models.DateTimeField(default=timezone.now)
 
@@ -26,9 +26,9 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,default="")
-    name = models.CharField(max_length=250, null= True)
-    email = models.CharField(max_length=250, null= True)
-    subject = models.CharField(max_length=250, null= True)
+    name = models.CharField(max_length=250, null=True)
+    email = models.CharField(max_length=250, null=True)
+    subject = models.CharField(max_length=250, null=True)
     message = models.TextField()
     date_created = models.DateTimeField(default=timezone.now)
 

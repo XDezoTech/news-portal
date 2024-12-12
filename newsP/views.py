@@ -6,7 +6,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 import json
-from . import models, forms
+from newsP import models, forms
+
 def context_data():
     context = {
         'site_name': 'XBDC',
@@ -52,9 +53,9 @@ def register_user(request):
             # Optionally log the user in directly
             login(request, user)
             messages.success(request, "Registration successful! You are now logged in.")
-            return redirect('/')  # Replace 'home-page' with your desired redirect
+            return redirect('/') # Replace 'home-page' with your desired redirect
 
-    return render(request, 'register.html') 
+    return render(request,"register.html")
 
 #login
 def login_user(request):
