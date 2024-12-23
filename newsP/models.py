@@ -19,10 +19,17 @@ class Post(models.Model):
     content = models.TextField()
     banner_path = models.ImageField(upload_to='news_bannner')
     status = models.CharField(max_length=2, choices=(("1",'Published'), ("2",'Unpublished')), default=2)
-    date_created = models.DateTimeField(default=timezone.now)
+    date_created = models.DateTimeField( auto_now=True)
+    # date_updated = models.DateTimeField(auto_now=True)  
 
     def __str__(self):
         return f"{self.title} - {self.user.username}"
+    # def save(self,*args, **kwargs):
+    #     if self.date_created:
+    #         super().save(self, *args, **kwargs)
+    #     else:
+    #         self.date_created=timezone.now
+    #         super().save(self, *args, **kwargs) 
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,default="")

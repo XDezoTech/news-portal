@@ -57,8 +57,7 @@
               >
                 {% if not post.id %}
                 <option value="" selected disabled></option>
-                {% endif %} {% for category in categories %} {% if category.id
-                == post.category.id %}
+                {% endif %} {% for category in categories %} {% if category.id == post.category.id %}
                 <option value="{{category.id}}" selected>{{category}}</option>
                 {% else %}
                 <option value="{{category.id}}">{{category}}</option>
