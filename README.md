@@ -1,4 +1,4 @@
 # News Portal 
 Students working on this repo: 
-- utsav devkota
+- utsab devkota
 - mandeep rajbhandari
