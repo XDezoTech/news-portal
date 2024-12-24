@@ -188,6 +188,7 @@ def view_post(request, pk=None):
         context['actions'] = True
     return render(request, 'single_post.html', context)
 
+@login_required
 def save_comment(request):
     resp={'status':'failed', 'msg':'','id':None}
     if request.method == 'POST':
