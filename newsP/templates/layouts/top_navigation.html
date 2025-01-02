@@ -49,6 +49,7 @@
                   <a href="#">{{ user.username }}            
   </a>
                   <ul class="dropdown">
+                    {% comment %} <i class=" fa-solid fa-caret-down "></i> {% endcomment %}
                     <li><a href="{% url 'profile-page' %}">Profile</a></li>
                     <li><a href="{% url 'new-post' %}">New Post</a></li>
                     <li><a href="{% url 'all-posts' %}">All Posts</a></li>

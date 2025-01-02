@@ -143,7 +143,7 @@ https://github.com/imakewebthings/jquery-waypoints/blob/master/licenses.txt
             // adds toggle button to li items that have children
             classy_nav.find('li a').each(function () {
                 if ($(this).next().length > 0) {
-                    $(this).parent('li').addClass('has-down').append('<i class=" fa-solid fa-caret-down "><span class="dd-trigger"></span></i>');
+                    $(this).parent('li').addClass('has-down').append('<span class="dd-trigger"></span>');
                 }
             });
 

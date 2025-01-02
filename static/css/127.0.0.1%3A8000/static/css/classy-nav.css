@@ -146,8 +146,7 @@ img {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-.icon-classy-nav-down-arrow:before {
-  content: "\e900"; }
+
 
 
 .classynav ul li ul li.has-down > a::after {
