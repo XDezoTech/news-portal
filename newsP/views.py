@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
+from .models import Post
 
 import json
 from newsP import models, forms
@@ -16,6 +17,8 @@ def context_data():
         'categories' : models.Category.objects.filter(status = 1).all(),
     }
     return context
+
+
 
 # Create your views here.
 def home(request):
