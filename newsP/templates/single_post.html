@@ -85,7 +85,7 @@
 
                     <!-- Reply Form -->
                     <div class="contact-form-area">
-                        <form action="" id="comment-form" method="post">
+                        <form action="#" id="comment-form" method="post" enctype="multipart/form-data>
                             {% csrf_token %}
                             <input type="hidden" name="id" value="">
                             <input type="hidden" name="post" value="{{post.id}}">

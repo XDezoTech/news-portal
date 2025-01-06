@@ -7,9 +7,13 @@ from .views import register_user
 from django.conf import settings
 from django.conf.urls.static import static
 context = views.context_data()
+from .feeds import LatestPostsFeed
+
+# app_name = 'newsPortal' 
 
 urlpatterns = [
     path('', views.home, name="home-page"),
+    path("feed/", LatestPostsFeed(), name="Latest Feed"),
     path('login',auth_views.LoginView.as_view(template_name="login.html",redirect_authenticated_user = True,extra_context = context),name='login-page'),
     path('logout',views.logoutuser,name='logout'),
     path('register/', register_user, name='register'),
@@ -26,4 +30,5 @@ urlpatterns = [
     path('category/<int:pk>', views.category_posts, name="category-post"),
     path('delete_post/<int:pk>', views.delete_post, name="delete-post"),
     path('delete_comment/<int:pk>', views.delete_comment, name="delete-comment"),
+
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

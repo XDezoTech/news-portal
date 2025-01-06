@@ -4,6 +4,10 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status='published')
+
 class Category(models.Model):
     name = models.CharField(max_length=250, null=True)
     status = models.CharField(max_length=2, choices=(("1",'Active'), ("2",'Inactive')), default=1)
@@ -14,22 +18,18 @@ class Category(models.Model):
 
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE,default="")
-    title = models.TextField()
+    title = models.CharField(max_length=255)
     content = models.TextField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,default="", null=True, blank=True)
     banner_path = models.ImageField(upload_to='news_bannner')
-    status = models.CharField(max_length=2, choices=(("1",'Published'), ("2",'Unpublished')), default=2)
-    date_created = models.DateTimeField( auto_now=True)
-    # date_updated = models.DateTimeField(auto_now=True)  
+    status = models.IntegerField(default=0)  # Example field for status
+    date_created = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    objects = models.Manager()
 
     def __str__(self):
-        return f"{self.title} - {self.user.username}"
-    # def save(self,*args, **kwargs):
-    #     if self.date_created:
-    #         super().save(self, *args, **kwargs)
-    #     else:
-    #         self.date_created=timezone.now
-    #         super().save(self, *args, **kwargs) 
+        return self.title
+
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,default="")
